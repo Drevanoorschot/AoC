@@ -23,7 +23,6 @@ public class BagSpec {
             try {
                 amount = Integer.parseInt(bag.split(" ")[0]);
             } catch (NumberFormatException e) {
-                tempMap.put(bag.replaceAll("no ", ""), 0);
                 continue;
             }
             String type = bag.replaceAll("[0-9]+ ", "").replace("bags", "bag");
@@ -50,16 +49,29 @@ public class BagSpec {
         return bagSpecs;
     }
 
-    public static Set<BagSpec> findAllContainers(Set<BagSpec> allBagSpecs, String bagSpecName) {
-        return allBagSpecs.stream().filter(spec -> spec.typeAmountContainer.containsKey(bagSpecName)).map(s -> s.containedIn.isEmpty() ? new HashSet<>() : findAllContainers(allBagSpecs, s.type)).reduce((x, y) -> {
-            x.addAll(y);
-            return x;
-        }).get();
+    public static Set<String> findAllContainers(Set<BagSpec> allBagSpecs, String bagSpecName) {
+        Set<String> containers = allBagSpecs.stream().filter(s -> s.type.equals(bagSpecName)).findFirst().get().containedIn;
+        Set<String> tempContainers = new HashSet<>();
+        for(String bag : containers) {
+            Set<String> containersOfContainer = findAllContainers(allBagSpecs, bag);
+            tempContainers.addAll(containersOfContainer);
+        }
+        containers.addAll(tempContainers);
+        return containers;
+    }
+    public static int countInnerContainers(Set<BagSpec> allBagSpecs, String bagSpecName) {
+        BagSpec bagSpec = allBagSpecs.stream().filter(s -> s.type.equals(bagSpecName)).findFirst().get();
+        int count = bagSpec.typeAmountContainer.isEmpty() ? 0 : bagSpec.typeAmountContainer.keySet().stream().map(bagSpec.typeAmountContainer::get).reduce(Integer::sum).get();
+        for (String spec : bagSpec.typeAmountContainer.keySet()) {
+            count += bagSpec.typeAmountContainer.get(spec) * countInnerContainers(allBagSpecs, spec);
+        }
+        return count;
     }
 
     public static void main(String[] args) {
         Set<BagSpec> bagSpecs = contructBagSet();
         System.out.println(findAllContainers(bagSpecs, "shiny gold bag").size());
+        System.out.println(countInnerContainers(bagSpecs, "shiny gold bag"));
     }
 
 }
