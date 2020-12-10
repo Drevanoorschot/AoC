@@ -38,4 +38,12 @@ public class Util {
         String input = fileToString(openResource(path));
         return input.split(delimiter);
     }
+
+    public static List<Long> processLargeNumberInput(String path) throws URISyntaxException, IOException {
+        String input = fileToString(openResource(path));
+        String[] inputArray = input.split("\n");
+        List<Long> numbers = new ArrayList<>();
+        List.of(inputArray).forEach(str -> numbers.add(Long.parseLong(str)));
+        return numbers;
+    }
 }
