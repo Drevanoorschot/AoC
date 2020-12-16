@@ -1,12 +1,10 @@
-package day2;
+package day02;
 
 import util.Util;
 
 import java.io.IOException;
-import java.io.OutputStream;
 import java.net.URISyntaxException;
 import java.util.List;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 public class PasswordSpec {
@@ -37,7 +35,7 @@ public class PasswordSpec {
     }
 
     public static void main(String[] args) throws IOException, URISyntaxException {
-        String[] input = Util.processStringInput("/day2/input.txt");
+        String[] input = Util.processStringInput("/day02/input.txt");
         //ex1
         int ex1Count = 0;
         int ex2Count = 0;

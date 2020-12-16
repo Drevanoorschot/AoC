@@ -1,4 +1,4 @@
-package day1;
+package day01;
 
 import util.Util;
 
@@ -11,7 +11,7 @@ public class Main {
 
     public static void main(String[] args) throws URISyntaxException, IOException {
         // file processing
-        List<Integer> numbers = Util.processNumberInput("/day1/input.txt");
+        List<Integer> numbers = Util.processNumberInput("/day01/input.txt");
         //exercise 1
         System.out.println("---ex 1----");
         solveEx1(numbers);

@@ -1,4 +1,4 @@
-package day7;
+package day07;
 
 import util.Util;
 
@@ -33,7 +33,7 @@ public class BagSpec {
 
     static {
         try {
-            input = Util.processStringInput("/day7/input.txt");
+            input = Util.processStringInput("/day07/input.txt");
         } catch (URISyntaxException | IOException e) {
             e.printStackTrace();
         }

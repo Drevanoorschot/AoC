@@ -1,11 +1,10 @@
-package day5;
+package day05;
 
 import util.Util;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.*;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 public class Seat {
@@ -13,7 +12,7 @@ public class Seat {
 
     static {
         try {
-            input = Util.processStringInput("/day5/input.txt", "\n");
+            input = Util.processStringInput("/day05/input.txt", "\n");
         } catch (URISyntaxException | IOException e) {
             e.printStackTrace();
         }

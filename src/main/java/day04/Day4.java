@@ -1,11 +1,10 @@
-package day4;
+package day04;
 
 import util.Util;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -36,7 +35,7 @@ public class Day4 {
 
     static {
         try {
-            input = Util.processStringInput("/day4/input.txt", "\n\n");
+            input = Util.processStringInput("/day04/input.txt", "\n\n");
         } catch (URISyntaxException | IOException e) {
             e.printStackTrace();
         }

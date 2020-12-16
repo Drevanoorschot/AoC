@@ -1,19 +1,17 @@
-package day9;
+package day09;
 
 import util.Util;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.List;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
 
 public class Decryptor {
     public static List<Long> input;
 
     static {
         try {
-            input = Util.processLargeNumberInput("/day9/input.txt");
+            input = Util.processLargeNumberInput("/day09/input.txt");
         } catch (URISyntaxException | IOException e) {
             e.printStackTrace();
         }

@@ -1,4 +1,4 @@
-package day3;
+package day03;
 
 import util.Util;
 
@@ -11,7 +11,7 @@ public class TreeCounter {
 
     static {
         try {
-            input = Util.processStringInput("/day3/input.txt");
+            input = Util.processStringInput("/day03/input.txt");
         } catch (URISyntaxException | IOException e) {
             e.printStackTrace();
         }

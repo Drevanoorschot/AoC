@@ -1,4 +1,4 @@
-package day6;
+package day06;
 
 import util.Util;
 
@@ -12,7 +12,7 @@ public class QuestionaireResults {
 
     static {
         try {
-            input = Util.processStringInput("/day6/input.txt", "\n\n");
+            input = Util.processStringInput("/day06/input.txt", "\n\n");
         } catch (URISyntaxException | IOException e) {
             e.printStackTrace();
         }

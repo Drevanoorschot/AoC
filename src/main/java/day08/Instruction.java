@@ -1,4 +1,4 @@
-package day8;
+package day08;
 
 import util.Util;
 
@@ -6,8 +6,8 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.Arrays;
 
-import static day8.InstructionType.jmp;
-import static day8.InstructionType.nop;
+import static day08.InstructionType.jmp;
+import static day08.InstructionType.nop;
 
 public class Instruction {
 
@@ -15,7 +15,7 @@ public class Instruction {
 
     static {
         try {
-            input = Util.processStringInput("/day8/input.txt", "\n");
+            input = Util.processStringInput("/day08/input.txt", "\n");
         } catch (URISyntaxException | IOException e) {
             e.printStackTrace();
         }

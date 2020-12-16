@@ -1,7 +1,5 @@
 package day11;
 
-import day5.Seat;
-
 import java.util.HashMap;
 import java.util.Map;
 
