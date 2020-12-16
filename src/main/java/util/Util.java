@@ -6,6 +6,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.nio.ByteBuffer;
 import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -47,5 +48,18 @@ public class Util {
         List<Long> numbers = new ArrayList<>();
         List.of(inputArray).forEach(str -> numbers.add(Long.parseLong(str)));
         return numbers;
+    }
+
+    private static ByteBuffer buffer = ByteBuffer.allocate(Long.BYTES);
+
+    public static byte[] longToBytes(long x) {
+        buffer.putLong(0, x);
+        return buffer.array();
+    }
+
+    public static long bytesToLong(byte[] bytes) {
+        buffer.put(bytes, 0, bytes.length);
+        buffer.flip();//need flip
+        return buffer.getLong();
     }
 }
