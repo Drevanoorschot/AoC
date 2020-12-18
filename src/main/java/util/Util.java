@@ -62,4 +62,12 @@ public class Util {
         buffer.flip();//need flip
         return buffer.getLong();
     }
+
+    public static String removeLastChar(String str) {
+        return str.substring(0, str.length() - 1);
+    }
+
+    public static int countSubStr(String str, String substr) {
+        return (str.length() - str.replace(substr, "").length()) / substr.length();
+    }
 }
