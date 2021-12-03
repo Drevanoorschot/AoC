@@ -7,7 +7,7 @@ class Instruction {
     }
 }
 
-const input_data = fs.readFileSync("day02/input.txt", 'utf-8').split("\n")
+const input_data = fs.readFileSync("input.txt", 'utf-8').split("\n")
     .map(x => new Instruction(
         x.split(" ")[0],
         parseInt(x.split(" ")[1])
@@ -51,5 +51,5 @@ function part2() {
     return hor_pos * depth;
 }
 
-console.log("answer part 1: " + part1(input_data));
-console.log("answer part 2: " + part2(input_data));
+console.log("answer part 1: " + part1());
+console.log("answer part 2: " + part2());
