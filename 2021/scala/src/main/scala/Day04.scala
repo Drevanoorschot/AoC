@@ -33,7 +33,7 @@ object Day04 extends Day {
       cards.foreach(c => c.crossOut(call))
       unfinished_cards = unfinished_cards.filter(c => c.fullCol == null && c.fullRow == null)
       if(unfinished_cards.size == 1) {
-        last_card = unfinished_cards.iterator.next()
+        last_card = unfinished_cards.head
       }
       if(unfinished_cards.isEmpty) {
         return call * last_card.rows
