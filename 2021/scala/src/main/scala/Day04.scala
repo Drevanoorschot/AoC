@@ -11,7 +11,7 @@ object Day04 extends Day {
       .map(i => i.toInt))
     .map(is => new Card(is)).toSet
 
-  override def q1(): Int = {
+  override def q1(): Long = {
     for (call <- call_order) {
       cards.foreach(c => c.crossOut(call))
       for (card <- cards) {
@@ -26,7 +26,7 @@ object Day04 extends Day {
     -1
   }
 
-  override def q2(): Int = {
+  override def q2(): Long = {
     var last_card:Card = null
     var unfinished_cards = cards
     for (call <- call_order) {

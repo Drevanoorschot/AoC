@@ -11,7 +11,7 @@ trait Day {
     } finally source.close()
   }
 
-  def q1(): Int
+  def q1(): Long
 
-  def q2(): Int
+  def q2(): Long
 }

@@ -8,7 +8,7 @@ object Day05 extends Day {
       new Point(intArray(0).toInt, intArray(1).toInt),
       new Point(intArray(2).toInt, intArray(3).toInt)))
 
-  override def q1(): Int = {
+  override def q1(): Long = {
     val pointMap = new mutable.HashMap[Int, Int]
     for (line <- lines.filter(line => line.orientation != Orientation.DIAGONAL)) {
       for (point <- line.points) {
@@ -19,7 +19,7 @@ object Day05 extends Day {
   }
 
 
-  override def q2(): Int = {
+  override def q2(): Long = {
     val pointMap = new mutable.HashMap[Int, Int]
     for (line <- lines) {
       for (point <- line.points) {
