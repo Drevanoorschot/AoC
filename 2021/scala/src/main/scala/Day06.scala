@@ -38,10 +38,6 @@ object Day06 extends Day {
   }
 }
 
-class StackFish(val dateBorn: Int) {
-
-}
-
 class Fish(var timer: Int) {
 
   def tick(): Unit = {
