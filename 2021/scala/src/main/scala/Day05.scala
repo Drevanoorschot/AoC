@@ -28,43 +28,45 @@ object Day05 extends Day {
     }
     pointMap count (x => x._2 > 1)
   }
-}
 
-class Point(val x: Int, val y: Int) {
-  val hash: Int = (x + y) * (x + y + 1) / 2 + x //cantor pairing
-}
-
-sealed trait Orientation
-
-object Orientation {
-  case object HORIZONTAL extends Orientation
-
-  case object VERTICAL extends Orientation
-
-  case object DIAGONAL extends Orientation
-
-}
-
-class Line(val p1: Point, val p2: Point) {
-  val orientation: Orientation = {
-    if (p1.x == p2.x) Orientation.HORIZONTAL
-    else if (p1.y == p2.y) Orientation.VERTICAL
-    else Orientation.DIAGONAL
+  class Point(val x: Int, val y: Int) {
+    val hash: Int = (x + y) * (x + y + 1) / 2 + x //cantor pairing
   }
-  val points: Array[Point] = {
-    orientation match {
-      case Orientation.HORIZONTAL =>
-        if (p1.y < p2.y) (p1.y to p2.y).map(y => new Point(p1.x, y)).toArray
-        else (p2.y to p1.y).map(y => new Point(p1.x, y)).toArray
-      case Orientation.VERTICAL =>
-        if (p1.x < p2.x) (p1.x to p2.x).map(x => new Point(x, p1.y)).toArray
-        else (p2.x to p1.x).map(x => new Point(x, p1.y)).toArray
-      case Orientation.DIAGONAL =>
-        val beginPoint = if (p1.y < p2.y) p1 else p2
-        val endPoint = if (p1.y < p2.y) p2 else p1
-        if (beginPoint.x < endPoint.x) (0 to endPoint.y - beginPoint.y).map(n => new Point(beginPoint.x + n, beginPoint.y + n)).toArray
-        else (0 to endPoint.y - beginPoint.y).map(n => new Point(beginPoint.x - n, beginPoint.y + n)).toArray
+
+  sealed trait Orientation
+
+  object Orientation {
+    case object HORIZONTAL extends Orientation
+
+    case object VERTICAL extends Orientation
+
+    case object DIAGONAL extends Orientation
+
+  }
+
+  class Line(val p1: Point, val p2: Point) {
+    val orientation: Orientation = {
+      if (p1.x == p2.x) Orientation.HORIZONTAL
+      else if (p1.y == p2.y) Orientation.VERTICAL
+      else Orientation.DIAGONAL
+    }
+    val points: Array[Point] = {
+      orientation match {
+        case Orientation.HORIZONTAL =>
+          if (p1.y < p2.y) (p1.y to p2.y).map(y => new Point(p1.x, y)).toArray
+          else (p2.y to p1.y).map(y => new Point(p1.x, y)).toArray
+        case Orientation.VERTICAL =>
+          if (p1.x < p2.x) (p1.x to p2.x).map(x => new Point(x, p1.y)).toArray
+          else (p2.x to p1.x).map(x => new Point(x, p1.y)).toArray
+        case Orientation.DIAGONAL =>
+          val beginPoint = if (p1.y < p2.y) p1 else p2
+          val endPoint = if (p1.y < p2.y) p2 else p1
+          if (beginPoint.x < endPoint.x) (0 to endPoint.y - beginPoint.y).map(n => new Point(beginPoint.x + n, beginPoint.y + n)).toArray
+          else (0 to endPoint.y - beginPoint.y).map(n => new Point(beginPoint.x - n, beginPoint.y + n)).toArray
+      }
     }
   }
 }
+
+
 

@@ -36,20 +36,20 @@ object Day06 extends Day {
     }
     state.sum
   }
+  class Fish(var timer: Int) {
+
+    def tick(): Unit = {
+      timer -= 1
+    }
+
+    def isExpecting: Boolean = {
+      timer == -1
+    }
+
+    def duplicate(): Fish = {
+      this.timer = 6
+      new Fish(8)
+    }
+  }
 }
 
-class Fish(var timer: Int) {
-
-  def tick(): Unit = {
-    timer -= 1
-  }
-
-  def isExpecting: Boolean = {
-    timer == -1
-  }
-
-  def duplicate(): Fish = {
-    this.timer = 6
-    new Fish(8)
-  }
-}
