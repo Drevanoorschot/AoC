@@ -24,7 +24,7 @@ object Day11 extends Day {
     for (_ <- 0 until 100) {
       simulateStep()
     }
-    flashes
+    this.flashes
   }
 
   override def q2(): Long = {
@@ -34,7 +34,7 @@ object Day11 extends Day {
     this.steps
   }
 
-  def simulateStep():Unit = {
+  def simulateStep(): Unit = {
     octos
       .foreach(octoRow => octoRow
         .foreach(octo => octo.increaseEnergy())
