@@ -3,4 +3,4 @@ project(advent_of_code)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(advent_of_code main.cpp days/day.cpp days/day13.cpp util/exceptions.cpp)
+add_executable(advent_of_code main.cpp days/day.cpp days/day13.cpp)
