@@ -6,6 +6,7 @@
 #include "string"
 
 #include "days/day13.cpp"
+#include "days/day14.cpp"
 
 const char* EXAMPLE_PATH = "../inputs/example/%d.txt";
 const char* PUZZLE_PATH = "../inputs/puzzle/%d.txt";
@@ -14,6 +15,7 @@ const char* PUZZLE_PATH = "../inputs/puzzle/%d.txt";
 int main(int argc, char *argv[]) {
     if (argc < 2) {
         printf("USAGE main <day number> [-e]");
+        return EXIT_FAILURE;
     }
     int dayNumber = std::stoi(argv[1]);
     bool exampleMode = argc >= 3 && std::strcmp(argv[2], "-e") == 0;
@@ -34,8 +36,13 @@ int main(int argc, char *argv[]) {
             Day13(str).run();
             return EXIT_SUCCESS;
         }
+        case 14: {
+            std::string str = std::string(input);
+            Day14(str).run();
+            return EXIT_SUCCESS;
+        }
         default: {
-            std::cerr << "[ERROR] Day " << dayNumber << " not supported";
+            std::cerr << "[ERROR] Day " << dayNumber << " not supported\n";
             return EXIT_FAILURE;
         }
     }

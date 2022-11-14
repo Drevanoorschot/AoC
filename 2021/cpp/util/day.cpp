@@ -1,7 +1,8 @@
 #include <cstdio>
 #include <string>
-#include <utility>
 
+#ifndef UTIL_DAY
+#define UTIL_DAY
 class Day {
 public:
     virtual long q1() = 0;
@@ -18,3 +19,4 @@ public:
 protected:
     std::string input;
 };
+#endif

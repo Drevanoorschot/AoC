@@ -1,8 +1,8 @@
 #include <vector>
 #include <iostream>
-#include "day.cpp"
+#include "../util/day.cpp"
 #include "unordered_set"
-
+#include "../util/util.cpp"
 class Point {
 public:
     int x;
@@ -22,7 +22,7 @@ class PointHash {
 public:
     size_t operator()(const Point &p) const {
         // cantor pairing
-        return (p.x + p.y) * (p.x + p.y + 1) / (2 + p.y);
+        return util::cantor_pair(p.x, p.y);
     }
 };
 
@@ -67,20 +67,15 @@ public:
         foldInstructions = std::vector<FoldInstruction>();
         std::string pointInput = input.substr(0, input.find("\n\n") + 1);
         std::string foldInput = input.substr(input.find("\n\n") + 2, std::string::npos);
-        size_t pos;
-        while ((pos = pointInput.find('\n')) != std::string::npos) {
-            std::string token = pointInput.substr(0, pos);
+        for(const auto& token : util::split_string(pointInput, "\n")) {
             int x = std::stoi(token.substr(0, token.find(',')));
             int y = std::stoi(token.substr(token.find(',') + 1, std::string::npos));
             points.insert(Point(x, y));
-            pointInput.erase(0, pos + 1);
         }
-        while ((pos = foldInput.find('\n')) != std::string::npos) {
-            std::string token = foldInput.substr(0, pos);
+        for(const auto& token : util::split_string(foldInput, "\n")) {
             auto along = Along(token.c_str()[token.find('=') - 1]);
             int val = std::stoi(token.substr(token.find('=') + 1, std::string::npos));
-            foldInstructions.emplace_back(FoldInstruction(along, val));
-            foldInput.erase(0, pos + 1);
+            foldInstructions.emplace_back(along, val);
         }
     }
 
