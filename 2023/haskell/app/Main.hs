@@ -8,9 +8,9 @@ import Day1
 
 main :: IO ()
 main = do
-  dayNumber <- parseInt <$> head <$> getArgs;
-  input <- inputToString dayNumber;
-  putStrLn $ formatAnswer $ solveDay (dayNumber, input);
+  dayNumber <- parseInt <$> head <$> getArgs
+  input <- inputToString dayNumber
+  putStrLn $ formatAnswer $ solveDay (dayNumber, input)
 
 inputToString :: Int -> IO String
 inputToString dayNumber = readFile $ "inputs/day" ++ show dayNumber ++ ".txt"
