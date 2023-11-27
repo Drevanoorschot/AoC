@@ -26,6 +26,7 @@ library
   exposed-modules:
       Day1
       DayTemplate
+      Util
   other-modules:
       Paths_haskell
   autogen-modules:
