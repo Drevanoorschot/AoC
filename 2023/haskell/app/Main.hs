@@ -9,11 +9,14 @@ import Day1
 main :: IO ()
 main = do
   dayNumber <- parseInt <$> head <$> getArgs
-  input <- inputToString dayNumber
+  test <- (==) "test" <$> head <$> drop 1 <$> getArgs
+  input <- inputToString dayNumber test
   putStrLn $ formatAnswer $ solveDay (dayNumber, input)
 
-inputToString :: Int -> IO String
-inputToString dayNumber = readFile $ "inputs/day" ++ show dayNumber ++ ".txt"
+inputToString :: Int -> Bool -> IO String
+inputToString dayNumber test
+  | not test = readFile $ "inputs/day" ++ show dayNumber ++ "/input.txt"
+  | test = readFile $ "inputs/day" ++ show dayNumber ++ "/test.txt"
 
 parseInt :: String -> Int
 parseInt str = read str :: Int
