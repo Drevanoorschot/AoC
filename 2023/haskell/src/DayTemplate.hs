@@ -1,6 +1,5 @@
 module DayTemplate (solve) where
 
-import Data.Text hiding (drop, foldl, head, length, reverse, take)
 import Util
 
 solve :: String -> (Answer, Answer)

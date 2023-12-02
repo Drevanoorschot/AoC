@@ -5,6 +5,7 @@ import System.Environment
 import Util
 
 import Day1
+import Day2
 
 main :: IO ()
 main = do
@@ -28,3 +29,4 @@ formatAnswer (StrAnswer a1, StrAnswer a2) =
 solveDay :: (Int, String) -> (Answer, Answer)
 solveDay (n, input)
   | n == 1 = Day1.solve input
+  | n == 2 = Day2.solve input

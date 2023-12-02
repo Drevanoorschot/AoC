@@ -1,16 +1,15 @@
 module Day1 (solve) where
 
-import Data.Text hiding (drop, foldl, head, length, reverse, take, any)
 import Util
 
 solve :: String -> (Answer, Answer)
 solve input = (q1 input, q2 input)
 
 q1 :: String -> Answer
-q1 input = IntAnswer $ sum $ parseLine <$> fmap unpack (splitOn (pack "\n") (pack input))
+q1 input = IntAnswer $ sum $ parseLine <$> splitToList input "\n"
 
 q2 :: String -> Answer
-q2 input = IntAnswer $ sum  $ parseLine2 <$> fmap unpack (splitOn (pack "\n") (pack input))
+q2 input = IntAnswer $ sum  $ parseLine2 <$> splitToList input "\n"
 
 parseLine :: String -> Int
 parseLine str = read [getDigit str, getDigit $ reverse str] :: Int
