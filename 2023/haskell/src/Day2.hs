@@ -21,7 +21,7 @@ q2 input = IntAnswer $ sum $ gamePower <$> parseGames input
 -- q1
 
 isValidGame :: Game -> Bool
-isValidGame (Game _ cs) = and (fmap validateColor (concat cs))
+isValidGame (Game _ cs) = all (all validateColor) cs
 
 validateColor :: Color -> Bool
 validateColor (Color c i)
