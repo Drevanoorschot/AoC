@@ -2,9 +2,9 @@ name:                haskell
 version:             0.1.0.0
 github:              "githubuser/haskell"
 license:             BSD-3-Clause
-author:              "Author name here"
+author:              "Dré van Oorschot"
 maintainer:          "example@example.com"
-copyright:           "2023 Author name here"
+copyright:           "2023 Dré van Oorschot"
 
 extra-source-files:
 - README.md
