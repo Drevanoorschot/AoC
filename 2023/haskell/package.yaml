@@ -6,8 +6,6 @@ author:              "Dré van Oorschot"
 maintainer:          "example@example.com"
 copyright:           "2023 Dré van Oorschot"
 
-extra-source-files:
-- README.md
 
 # Metadata used when publishing your package
 # synopsis:            Short description of your package
@@ -16,7 +14,7 @@ extra-source-files:
 # To avoid duplicated efforts in documentation and dealing with the
 # complications of embedding Haddock markup inside cabal files, it is
 # common to point users to the README.md file.
-description:         Please see the README on GitHub at <https://github.com/githubuser/haskell#readme>
+description:         Haskell implementation of AOC 2023
 
 dependencies:
 - base >= 4.7 && < 5

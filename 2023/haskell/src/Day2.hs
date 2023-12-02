@@ -64,3 +64,4 @@ parseColor :: [String] -> String -> Color
 parseColor (c:cs) str
     | take (length c) (reverse str) == reverse c = Color c (read (takeWhile (/= head c) str) :: Int)
     | otherwise = parseColor cs str
+parseColor [] str = error $ "Cannot find a valid color in \"" ++ str ++ "\""

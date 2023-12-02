@@ -25,8 +25,10 @@ formatAnswer (IntAnswer a1, IntAnswer a2) =
     "Answers:\nq1: " ++ show a1 ++ "\nq2: " ++ show a2
 formatAnswer (StrAnswer a1, StrAnswer a2) =
     "Answers:\nq1: " ++ a1 ++ "\nq2: " ++ a2
+formatAnswer (_, _) = error "Both answers should be the same type"
 
 solveDay :: (Int, String) -> (Answer, Answer)
 solveDay (n, input)
   | n == 1 = Day1.solve input
   | n == 2 = Day2.solve input
+  | otherwise = error $ "Day " ++ show n ++ " not yet implemented"
