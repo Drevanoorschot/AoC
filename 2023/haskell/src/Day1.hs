@@ -1,27 +1,29 @@
 module Day1 (solve) where
 
-import Data.Text hiding (drop, foldl, head, length, reverse, take)
+import Data.Text hiding (drop, foldl, head, length, reverse, take, any)
 import Util
 
 solve :: String -> (Answer, Answer)
 solve input = (q1 input, q2 input)
 
 q1 :: String -> Answer
-q1 input = IntAnswer $ sum $ fmap parseLine $ fmap unpack (splitOn (pack "\n") (pack input))
+q1 input = IntAnswer $ sum $ parseLine <$> fmap unpack (splitOn (pack "\n") (pack input))
 
 q2 :: String -> Answer
-q2 input = IntAnswer $ sum $ fmap parseLine2 $ fmap unpack (splitOn (pack "\n") (pack input))
+q2 input = IntAnswer $ sum  $ parseLine2 <$> fmap unpack (splitOn (pack "\n") (pack input))
 
 parseLine :: String -> Int
-parseLine str = read ((getDigit str) : (getDigit (reverse str)) : []) :: Int
+parseLine str = read [getDigit str, getDigit $ reverse str] :: Int
 
 getDigit :: String -> Char
 getDigit (c : str)
   | isDigit c = c
   | otherwise = getDigit str
 
+getDigit "" = '0'
+
 parseLine2 :: String -> Int
-parseLine2 str = read ((getDigit2 str) : (getDigit2 (reverse str)) : []) :: Int
+parseLine2 str = read [getDigit2 str, getDigit2 $ reverse str] :: Int
 
 getDigit2 :: String -> Char
 getDigit2 str
@@ -34,6 +36,7 @@ isDigit c = c >= '0' && c <= '9'
 
 data Digit = Digit String Char
 
+digits :: [Digit]
 digits =
   [ Digit "one" '1',
     Digit "two" '2',
@@ -47,7 +50,7 @@ digits =
   ]
 
 isWrittenOut :: String -> Bool
-isWrittenOut str = foldl (||) False $ fmap (\(Digit s c) -> take (length s) str == s || take (length s) str == reverse s) digits
+isWrittenOut str = any (\(Digit s _) -> take (length s) str == s || take (length s) str == reverse s) digits
 
 parseWrittenOut :: String -> Char
 parseWrittenOut str = tryAllDigits str digits
@@ -57,3 +60,5 @@ tryAllDigits str (Digit s c : ds)
   | take (length s) str == s = c
   | take (length s) str == reverse s = c
   | otherwise = tryAllDigits str ds
+
+tryAllDigits _ [] = '0'

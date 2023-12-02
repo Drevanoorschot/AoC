@@ -8,15 +8,13 @@ import Day1
 
 main :: IO ()
 main = do
-  dayNumber <- parseInt <$> head <$> getArgs
-  test <- (==) "test" <$> head <$> drop 1 <$> getArgs
-  input <- inputToString dayNumber test
+  dayNumber <- parseInt . head <$> getArgs
+  fileName <- (!! 1) <$> getArgs
+  input <- inputToString dayNumber fileName
   putStrLn $ formatAnswer $ solveDay (dayNumber, input)
 
-inputToString :: Int -> Bool -> IO String
-inputToString dayNumber test
-  | not test = readFile $ "inputs/day" ++ show dayNumber ++ "/input.txt"
-  | test = readFile $ "inputs/day" ++ show dayNumber ++ "/test.txt"
+inputToString :: Int -> String -> IO String
+inputToString dayNumber fileName = readFile $ "inputs/day" ++ show dayNumber ++ "/"++ fileName ++ ".txt"
 
 parseInt :: String -> Int
 parseInt str = read str :: Int
